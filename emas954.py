@@ -35,15 +35,15 @@ async def emas954(tv:TvDatafeed=TvDatafeed(), symbol:str="GC1!", exchange:str="C
 #  -----------------------------------------------
 def enviar_datos(symbol, url, emas954_1m, emas954_5m, emas954_15m, emas954_1h, emas954_4h, emas954_d, emas954_w):
     try:
-        params = {"activo": symbol, 
-                "ema954_1m": emas954_1m, 
-                "ema954_5m": emas954_5m, 
-                "ema954_15m": emas954_15m, 
-                "ema954_1h": emas954_1h,
-                "ema954_4h": emas954_4h,
-                "ema954_1d": emas954_d,
-                "ema954_w": emas954_w}
-        r = requests.get(url=url, params=params)
+        params = {"symbol": symbol, 
+                "emas954_1m": emas954_1m, 
+                "emas954_5m": emas954_5m, 
+                "emas954_15m": emas954_15m, 
+                "emas954_1h": emas954_1h,
+                "emas954_4h": emas954_4h,
+                "emas954_1d": emas954_d,
+                "emas954_w": emas954_w}
+        r = requests.post(url=url, params=params)
         if r.status_code == 200:
             print(r.text)
             #logger.info(f"EMA954_1m: {emas954_1m}, EMA954_5m: {emas954_5m}, EMA954_15m: {emas954_15m}, EMA954_1h: {emas954_1h}, EMA954_4h: {emas954_4h}, EMA954_D: {emas954_d}, EMA954_w: {emas954_w}")
@@ -72,8 +72,8 @@ async def main():
     emas954_w = ""
     ciclo = 0
     ciclo_final = 63
-    url_enviar_datos=""
-    url_disparar_github_actions = ""
+    url_enviar_datos="https://script.google.com/macros/s/AKfycbxwkG2nlESGa_ZCPttN2WRbE0zi6_8lr0MBlcOX2uSGm9PW6NJTk_Rskqy1hiUeQnVC6A/exec
+    url_disparar_github_actions = "https://script.google.com/macros/s/AKfycbxwkG2nlESGa_ZCPttN2WRbE0zi6_8lr0MBlcOX2uSGm9PW6NJTk_Rskqy1hiUeQnVC6A/exec
     
     while True:
         try:
@@ -118,6 +118,7 @@ async def main():
             print(f"Ciclo {ciclo} completado.")
             if ciclo >= ciclo_final:
                 print(f"Ciclo final {ciclo} alcanzado. Fin del programa.")
+                await asyncio.sleep(3.6)
                 r = requests.get(url_disparar_github_actions, params={"disparar": symbol})
                 if r.status_code == 200:
                     print(r.text)
