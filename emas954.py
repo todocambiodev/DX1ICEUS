@@ -72,8 +72,8 @@ async def main():
     emas954_w = ""
     ciclo = 0
     ciclo_final = 3
-    url_enviar_datos="https://script.google.com/macros/s/AKfycbxwkG2nlESGa_ZCPttN2WRbE0zi6_8lr0MBlcOX2uSGm9PW6NJTk_Rskqy1hiUeQnVC6A/exec
-    url_disparar_github_actions = "https://script.google.com/macros/s/AKfycbxwkG2nlESGa_ZCPttN2WRbE0zi6_8lr0MBlcOX2uSGm9PW6NJTk_Rskqy1hiUeQnVC6A/exec
+    url_enviar_datos="https://script.google.com/macros/s/AKfycbxwkG2nlESGa_ZCPttN2WRbE0zi6_8lr0MBlcOX2uSGm9PW6NJTk_Rskqy1hiUeQnVC6A/exec"
+    url_disparar_github_actions = "https://script.google.com/macros/s/AKfycbxwkG2nlESGa_ZCPttN2WRbE0zi6_8lr0MBlcOX2uSGm9PW6NJTk_Rskqy1hiUeQnVC6A/exec"
     
     while True:
         try:
